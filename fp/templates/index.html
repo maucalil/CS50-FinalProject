@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    {% if not session.user_id %}
+    <div class="background">
+        <h1 class="h1">Você precisa de ajuda para organizar suas contas financeiras de forma rápida e dinâmica?</h1>
+        <h2 class="h2">Então você veio ao lugar certo! Seja bem-vindo ao OrganizeContas!</h2>
+        <h3 class="h3">Aqui você pode organizar todas suas contas em uma tabela amigável e simples.</h3>
+        <h4 class="h4"><b>Para isso, basta seguir os passos abaixo:</b></h4>
+    </div>
+        <div class="explanation-container">
+            <section>
+                <img class="explanation-img" src="static/register.jpg" alt"Imagem mostrando como se registrar.">
+                <div class="explanation-txt">
+                    <p>Primeiro, registre-se para ter acesso ao conteúdo do site em <b><a href="/register">"Registre"</a></b>.</p>
+                </div>
+            </section>
+        </div>
+        <div class="explanation-container">
+            <section>
+                <img class="explanation-img" src="static/login.jpg" alt"Imagem mostrando como fazer login.">
+                <div class="explanation-txt">
+                    <p>Se já for registrado,faça seu login em <b><a href="/login">"Login"</a></b>.</p>
+                </div>
+            </section>
+        </div>
+        <script src="static/scroll-out.js"></script>
+        <script type="text/javascript">
+            ScrollOut ({
+                targets: 'section,div,img,p'
+            });
+        </script>
+    {% else %}
+    <div class="background">
+        <h4 class="h4">
+            <p>Agora que já se registrou e fez o login, você pode organizar suas contas seguindo os passos abaixo:</p>
+        </h4>
+    </div>
+    <div class="explanation-container">
+        <section>
+            <img class="explanation-img"src="static/adicione uma conta.jpg" alt"Imagem mostrando como adicionar uma conta.">
+            <div class="explanation-txt">
+                <p>Adicionar uma conta em um formulário em  <b><a href="/addbill">"Adicione uma conta"</a></b>.</p>
+            </div>
+        </section>
+    </div>
+
+    <div class="explanation-container">
+        <section>
+            <img class="explanation-img" src="static/contas.jpg" alt"Imagem mostrando a tabela com as contas pendentes.">
+            <div class="explanation-txt">
+                <p>Após adicionar, a tabela será formada e pode ser vista em <b><a href="/bills">"Contas"</a></b>.</p>
+            </div>
+        </section>
+    </div>
+    <div class="background">
+        <h4 class="h4">
+            <p style="padding-bottom: 80px">Depois, se já tiver pago a conta, basta dar o check-list pela própria tabela em <b><a class="img-link" href="/bills">Contas</a></b> clicando no botão "Já pagou alguma conta?"
+            ou direto acessando <b><a class="img-link" href="/paybill">"Pague sua conta"</a></b>.</p>
+        </h4>
+    </div>
+    <div class="explanation-container">
+        <section>
+            <img class="explanation-img" src="static/contas pagas.jpg" alt"Imagem mostrando a tabela de contas pagas.">
+            <div class="explanation-txt">
+                <p>Agora basta acessar a página <b><a href="/paidbills">"Contas Pagas"</a></b> para ver sua tabela com suas contas pagas e dia de pagamento.</p>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="explanation-container">
+        <section>
+            <img class="explanation-img" src="static/logout.jpg" alt"Imagem mostrando onde fazer logout.">
+            <div class="explanation-txt">
+                <p>Se quiser sair de sua conta, basta fazer o <b><a href="/logout">logout.</a></b></p>
+            </div>
+        </section>
+    </div>
+    <script src="static/scroll-out.js"></script>
+    <script type="text/javascript">
+        ScrollOut ({
+            targets: 'section, img, p, .background'
+        });
+    </script>
+    {% endif %}
+{% endblock %}

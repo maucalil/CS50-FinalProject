@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="nothome">
+        <div class="container p-5">
+            <div>
+                <form class="lf" align="left" method="get" action="{{url_for('addbill')}}">
+                    <button class="btn btn-primary btn-sm" id="addbill" name="addbill">+ Adicione uma conta</button>
+                </form>
+                <form align="right" action="{{url_for('paybill')}}" method="get">
+                    <button class="btn btn-primary btn-sm" id="paybill" name="paybill">Já pagou alguma conta?</button>
+                </form>
+            </div>
+            <table id="table" style="width:100%" class="table table-striped">
+
+                <thead>
+                    <tr class="thead-dark">
+                       <th>Nome</th>
+                       <th>Preço</th>
+                       <th>Validade</th>
+                       <th>Dias restantes</th>
+                       <th>Especificação</th>
+                       <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for row in bills_rows %}
+                        <tr>
+                            <td>{{ row["name"] }}</td>
+                            <td>R${{  '%0.2f'|format(row["price"]) }}</td>
+                            <td>{{ row["validade"] }}</td>
+                            <td>{{ row["remainingDays"] }} dias até o vencimento</td>
+                            <td>{{ row["especificação"] }}</td>
+                            <td></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td>TOTAL</td>
+                        {% if not total %}
+                        <td></td>
+                        {% else %}
+                        <td>R${{  '%0.2f'|format(total) }}</td>
+                        {% endif %}
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+{% endblock %}

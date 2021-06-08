@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Pay Bill
+{% endblock %}
+
+{% block main %}
+    <div class="nothome">
+        <div class="container p-5">
+            <form action="/paybill" method="post">
+                <select class="form-group" id="name" name="name">
+                <option value="" disabled selected>Selecione a conta que já foi paga:</option>
+                {% for row in bills_rows %}
+                <option id="paybill" name="paybill" value="{{row["name"] }}">{{ row["name"]}}</option>
+                {%endfor%}
+                </select>
+                <form>
+                <button class="btn btn-primary" id="submit" type="submit" disabled>Conta Paga</button>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="static/pay.js"></script>
+{% endblock %}

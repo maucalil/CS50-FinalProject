@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add bills
+{% endblock %}
+
+{% block main %}
+    <div class="container p-5">
+        <form action="/addbill" method="post">
+            <div class="form-group nothome">
+                <input autocomplete="off" autofocus class="form-control" id="name" name="name" placeholder="Nome" type="text">
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" class="form-control" id="price" name="price" placeholder="Preço" type="decimal" >
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" class="form-control" id="validade" name="validade" placeholder="Validade(DD/MM/AAAA)" type="text">
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" class="form-control" id="especificação" name="especificação" placeholder="Especificação(opicional)" type="text">
+            </div>
+            <button class="btn btn-primary" id="submit" type="submit" disabled>Add</button>
+        </form>
+    </div>
+    <script type="text/javascript" src="static/addbill.js"></script>
+{% endblock %}

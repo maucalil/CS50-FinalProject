@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Contas Pagas
+{% endblock %}
+
+{% block main %}
+    <div class="nothome">
+        <div class="container p-5">
+            <table id="table" style="width:100%" class="table table-striped">
+
+                <thead><tr class="thead-dark">
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Especificação dada à conta</th>
+                    <th>Dia do pagamento</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for row in paidbills_rows %}
+                    <tr>
+                    <td>{{ row["name"] }}</td>
+                    <td>R${{ '%0.2f'|format(row["price"]) }}</td>
+                    <td>{{ row["especificação"] }}</td>
+                    <td>{{ row["payday"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td>TOTAL</td>
+                        {% if not total %}
+                        <td></td>
+                        {% else %}
+                        <td>R${{  '%0.2f'|format(total) }}</td>
+                        {% endif %}
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+{% endblock %}

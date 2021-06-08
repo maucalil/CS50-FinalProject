@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- https://favicon.io/favicon-generator/?t=%24&ff=Cardo&fs=150&fc=%230A0&b=rounded&bc=%23005 -->
+        <link href="/static/favicon.ico" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <title>Organize Contas: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+
+        <nav class="navbar  navbar-expand-md fixed-top navbar-dark bg-dark ">
+            <a class="navbar-brand" href="/"><img src="static/favicon.png"></img>&ensp;<span class="blue">Organize Contas</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav mr-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/" ><span class="tcolor">Home</a></span></li>
+                        <li class="nav-item"><a class="nav-link" href="/bills"><span class="tcolor">Contas</a></span></li>
+                        <li class="nav-item"><a class="nav-link" href="/addbill"><span class="tcolor">Adicione uma conta</a></span></li>
+                        <li class="nav-item"><a class="nav-link" href="/paidbills" ><span class="tcolor">Contas Pagas</a></span></li>
+                    </ul>
+
+                    <ul class="navbar-nav ml-auto mt-2">
+                        {% if not session.user_id %}
+                            <li class="nav-item"><a class="nav-link" href="/register"><span class="tcolor">Register</a></span></li>
+                            <li class="nav-item"><a class="nav-link" href="/login"><span class="tcolor">Log In</a></span></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href="/logout"><span class="tcolor">Log Out</a></span></li>
+                        {% endif %}
+                    </ul>
+            </div>
+        </nav>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-primary border text-center alert-dismissible fade show" role="alert">
+                        <span>{{ message }}</span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <main >
+            {% block main %}{% endblock %}
+        </main>
+    </body>
+    <footer>Tire sua dúvida,ou dê seu feedback, entrando em contato pelo email <b><a href="mailto: mauricio.calil2@hotmail.com">mauricio.calil2@hotmail.com</a></b>.</footer>
+</html>
