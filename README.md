@@ -2,7 +2,7 @@
 
 Projeto final do curso CS50 da Harvard.
 
-  Trata-se de um site construido em python utilizando flask, html, css e mySql.
+  Trata-se de um site construido em python utilizando flask, html, css e Sql.
 
   Foi planejado para manuseamentos e controle das finanças do usuário, o qual
   pode inserir, remover e  atualizar contas pendentes no site.
